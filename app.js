@@ -11,24 +11,28 @@ const tasksContainer = document.querySelector('#tasksContainer');
 const clearAll = document.querySelector('#clearAll');
 const editTaskForm = document.querySelector('#editTaskForm');
 let currentEditId = '';
+const SORTING = {
+	asc: 'incr',
+	desc: 'decr',
+};
 
 render();
 
-localStorage.setItem(0, 'incr');
+localStorage.setItem(0, SORTING.asc);
 
 incr.addEventListener('click', () => {
-	localStorage.setItem(0, 'incr');
+	localStorage.setItem(0, SORTING.asc);
 	render();
 });
 
 decr.addEventListener('click', () => {
-	localStorage.setItem(0, 'decr');
+	localStorage.setItem(0, SORTING.desc);
 	render();
 });
 
 clearAll.addEventListener('click', () => {
 	localStorage.clear();
-	localStorage.setItem(0, 'incr');
+	localStorage.setItem(0, SORTING.asc);
 	render();
 });
 
@@ -145,11 +149,11 @@ function renderTasks() {
 	let toDoCount = 0;
 	let completedCount = 0;
 
-	if (localStorage.getItem(0) === 'incr') {
+	if (localStorage.getItem(0) === SORTING.asc) {
 		for (let i = 1; i < localStorage.length; i++) {
 			tasksArray.push(JSON.parse(localStorage.getItem(i)));
 		}
-	} else if (localStorage.getItem(0) === 'decr') {
+	} else if (localStorage.getItem(0) === SORTING.desc) {
 		for (let i = localStorage.length - 1; i > 0; i--) {
 			tasksArray.push(JSON.parse(localStorage.getItem(i)));
 		}
