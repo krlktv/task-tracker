@@ -146,14 +146,15 @@ function toTaskDate(taskDate) {
 
 function renderTasks() {
 	const tasksArray = [];
+	const sortingValue = localStorage.getItem(0);
 	let toDoCount = 0;
 	let completedCount = 0;
 
-	if (localStorage.getItem(0) === SORTING.asc) {
+	if (sortingValue === SORTING.asc) {
 		for (let i = 1; i < localStorage.length; i++) {
 			tasksArray.push(JSON.parse(localStorage.getItem(i)));
 		}
-	} else if (localStorage.getItem(0) === SORTING.desc) {
+	} else if (sortingValue === SORTING.desc) {
 		for (let i = localStorage.length - 1; i > 0; i--) {
 			tasksArray.push(JSON.parse(localStorage.getItem(i)));
 		}
