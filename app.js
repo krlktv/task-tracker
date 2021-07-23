@@ -43,19 +43,19 @@ addTaskForm.addEventListener('submit', e => {
 
 tasksContainer.addEventListener('click', e => {
 	if (e.target.classList.contains('btn-danger')) {
-		const id = e.target.closest('.list-group-item').dataset.id;
+		const id = getTaskId(e);
 		deleteTask(id);
 		render();
 	}
 
 	if (e.target.classList.contains('btn-success')) {
-		const id = e.target.closest('.list-group-item').dataset.id;
+		const id = getTaskId(e);
 		toggleCompleteness(id);
 		render();
 	}
 
 	if (e.target.classList.contains('btn-info')) {
-		const id = e.target.closest('.list-group-item').dataset.id;
+		const id = getTaskId(e);
 		fillTaskData(id);
 		currentEditId = id;
 	}
@@ -260,4 +260,8 @@ function getEditTaskData() {
 function render() {
 	clearForRender();
 	renderTasks();
+}
+
+function getTaskId(elem) {
+	return elem.target.closest('.list-group-item').dataset.id;
 }
