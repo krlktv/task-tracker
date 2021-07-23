@@ -12,36 +12,31 @@ const clearAll = document.querySelector('#clearAll');
 const editTaskForm = document.querySelector('#editTaskForm');
 let currentEditId = '';
 
-clearForRender();
-renderTasks();
+render();
 
 localStorage.setItem(0, 'incr');
 
 incr.addEventListener('click', () => {
 	localStorage.setItem(0, 'incr');
-	clearForRender();
-	renderTasks();
+	render();
 });
 
 decr.addEventListener('click', () => {
 	localStorage.setItem(0, 'decr');
-	clearForRender();
-	renderTasks();
+	render();
 });
 
 clearAll.addEventListener('click', () => {
 	localStorage.clear();
 	localStorage.setItem(0, 'incr');
-	clearForRender();
-	renderTasks();
+	render();
 });
 
 addTaskForm.addEventListener('submit', e => {
 	e.preventDefault();
 	const task = getNewTaskData();
 	addTaskToLocalStorage(task);
-	clearForRender();
-	renderTasks();
+	render();
 	addTaskForm.reset();
 	addTaskForm.querySelector('[data-dismiss="modal"]').click();
 });
@@ -50,15 +45,13 @@ tasksContainer.addEventListener('click', e => {
 	if (e.target.classList.contains('btn-danger')) {
 		const id = e.target.closest('.list-group-item').dataset.id;
 		deleteTask(id);
-		clearForRender();
-		renderTasks();
+		render();
 	}
 
 	if (e.target.classList.contains('btn-success')) {
 		const id = e.target.closest('.list-group-item').dataset.id;
 		toggleCompleteness(id);
-		clearForRender();
-		renderTasks();
+		render();
 	}
 
 	if (e.target.classList.contains('btn-info')) {
@@ -72,8 +65,7 @@ editTaskForm.addEventListener('submit', e => {
 	e.preventDefault();
 	const task = getEditTaskData();
 	addTaskToLocalStorage(task);
-	clearForRender();
-	renderTasks();
+	render();
 	editTaskForm.reset();
 	editTaskForm.querySelector('[data-dismiss="modal"]').click();
 });
@@ -263,4 +255,9 @@ function getEditTaskData() {
 	}
 
 	return task;
+}
+
+function render() {
+	clearForRender();
+	renderTasks();
 }
