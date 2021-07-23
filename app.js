@@ -15,9 +15,7 @@ let currentEditId = '';
 clearForRender();
 renderTasks();
 
-if (!localStorage.getItem(0)) {
-	localStorage.setItem(0, 'incr');
-}
+localStorage.setItem(0, 'incr');
 
 incr.addEventListener('click', () => {
 	localStorage.setItem(0, 'incr');
