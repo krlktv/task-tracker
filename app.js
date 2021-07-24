@@ -15,6 +15,11 @@ const SORTING = {
 	asc: 'incr',
 	desc: 'decr',
 };
+const PRIORITY = {
+	low: 'Low',
+	medium: 'Medium',
+	high: 'High',
+};
 
 render();
 
@@ -94,11 +99,11 @@ function getNewTaskData() {
 	let priority = '';
 
 	if (addTaskMedium) {
-		priority = 'Medium';
+		priority = PRIORITY.medium;
 	} else if (addTaskHigh) {
-		priority = 'High';
+		priority = PRIORITY.high;
 	} else {
-		priority = 'Low';
+		priority = PRIORITY.low;
 	}
 
 	return new Task(id, addTaskTitle, addTaskText, priority);
@@ -166,9 +171,9 @@ function renderTasks() {
 			continue;
 		} else {
 			let color = 'bg-warning';
-			if (current.priority === 'Low') {
+			if (current.priority === PRIORITY.low) {
 				color = 'bg-light';
-			} else if (current.priority === 'High') {
+			} else if (current.priority === PRIORITY.high) {
 				color = 'bg-danger';
 			}
 
@@ -237,9 +242,9 @@ function fillTaskData(id) {
 	const editModal = document.querySelector('#editModal');
 	editModal.querySelector('#editInputTitle').value = task.title;
 	editModal.querySelector('#editInputText').value = task.text;
-	if (task.priority === 'Low') {
+	if (task.priority === PRIORITY.low) {
 		editModal.querySelector('#editLow').checked = true;
-	} else if (task.priority === 'Medium') {
+	} else if (task.priority === PRIORITY.medium) {
 		editModal.querySelector('#editMedium').checked = true;
 	} else {
 		editModal.querySelector('#editHigh').checked = true;
@@ -252,11 +257,11 @@ function getEditTaskData() {
 	task.text = editTaskForm.querySelector('#editInputText').value;
 
 	if (editTaskForm.querySelector('#editMedium').checked) {
-		task.priority = 'Medium';
+		task.priority = PRIORITY.medium;
 	} else if (editTaskForm.querySelector('#editHigh').checked) {
-		task.priority = 'High';
+		task.priority = PRIORITY.high;
 	} else {
-		task.priority = 'Low';
+		task.priority = PRIORITY.low;
 	}
 
 	return task;
