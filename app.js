@@ -158,11 +158,11 @@ function renderTasks() {
 
 	if (sortingValue === SORTING.asc) {
 		for (let i = 1; i < localStorage.length; i++) {
-			tasksArray.push(JSON.parse(localStorage.getItem(i)));
+			addToTasksArray(tasksArray, i);
 		}
 	} else if (sortingValue === SORTING.desc) {
 		for (let i = localStorage.length - 1; i > 0; i--) {
-			tasksArray.push(JSON.parse(localStorage.getItem(i)));
+			addToTasksArray(tasksArray, i);
 		}
 	}
 
@@ -281,4 +281,8 @@ function createTaskTemplate(title, priority, date, text, editBtn) {
 
 function setSorting(value) {
 	localStorage.setItem(0, value);
+}
+
+function addToTasksArray(array, item) {
+	array.push(JSON.parse(localStorage.getItem(item)));
 }
