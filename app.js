@@ -26,12 +26,12 @@ render();
 localStorage.setItem(0, SORTING.asc);
 
 ascBtn.addEventListener('click', () => {
-	localStorage.setItem(0, SORTING.asc);
+	setSorting(SORTING.asc);
 	render();
 });
 
 descBtn.addEventListener('click', () => {
-	localStorage.setItem(0, SORTING.desc);
+	setSorting(SORTING.desc);
 	render();
 });
 
@@ -277,4 +277,8 @@ function createTaskTemplate(title, priority, date, text, editBtn) {
 			</div>
 		</div>
 	`;
+}
+
+function setSorting(value) {
+	localStorage.setItem(0, value);
 }
