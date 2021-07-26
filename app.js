@@ -36,8 +36,9 @@ descBtn.addEventListener('click', () => {
 });
 
 clearAllBtn.addEventListener('click', () => {
+	const sortingValue = localStorage.getItem(0);
 	localStorage.clear();
-	localStorage.setItem(0, SORTING.asc);
+	localStorage.setItem(0, sortingValue);
 	render();
 });
 
