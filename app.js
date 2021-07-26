@@ -3,12 +3,12 @@
 const addTaskForm = document.querySelector('#addTaskForm');
 const currentTasks = document.querySelector('#currentTasks');
 const completedTasks = document.querySelector('#completedTasks');
-const incr = document.querySelector('#incr');
-const decr = document.querySelector('#decr');
+const ascBtn = document.querySelector('#incr');
+const descBtn = document.querySelector('#decr');
 const toDoHeading = document.querySelector('#toDoHeading');
 const completedHeading = document.querySelector('#completedHeading');
 const tasksContainer = document.querySelector('#tasksContainer');
-const clearAll = document.querySelector('#clearAll');
+const clearAllBtn = document.querySelector('#clearAll');
 const editTaskForm = document.querySelector('#editTaskForm');
 let currentEditId = '';
 const SORTING = {
@@ -25,17 +25,17 @@ render();
 
 localStorage.setItem(0, SORTING.asc);
 
-incr.addEventListener('click', () => {
+ascBtn.addEventListener('click', () => {
 	localStorage.setItem(0, SORTING.asc);
 	render();
 });
 
-decr.addEventListener('click', () => {
+descBtn.addEventListener('click', () => {
 	localStorage.setItem(0, SORTING.desc);
 	render();
 });
 
-clearAll.addEventListener('click', () => {
+clearAllBtn.addEventListener('click', () => {
 	localStorage.clear();
 	localStorage.setItem(0, SORTING.asc);
 	render();
