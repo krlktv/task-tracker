@@ -183,7 +183,7 @@ function renderTasks() {
 			}
 
 			const task = document.createElement('li');
-			task.className = `list-group-item d-flex w-100 mb-2 ${color}`;
+			task.className = createTaskClassName(color);
 			task.dataset.id = current.id;
 			task.innerHTML = `
 			<div class="w-100 mr-2">
@@ -274,4 +274,8 @@ function render() {
 
 function getTaskId(elem) {
 	return elem.target.closest('.list-group-item').dataset.id;
+}
+
+function createTaskClassName(color) {
+	return `list-group-item d-flex w-100 mb-2 ${color}`;
 }
