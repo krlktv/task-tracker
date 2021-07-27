@@ -12,6 +12,19 @@
 			min-height: calc(100vh - 15px);
 			margin: 15px auto 0;
 		}
+
+		body.dark {
+			background-color: #434343 !important;
+			color: #fff !important;
+		}
+
+		body.dark nav {
+			background-color: #828282 !important;
+		}
+
+		body.dark .modal-content {
+			background-color: #828282 !important;
+		}
 	</style>
 	<title>LogicPart</title>
 </head>
@@ -29,7 +42,19 @@
 					<i class="fas fa-plus"></i>
 					Add task
 				</button>
-				<button type="button" class="btn btn-primary mx-2" id="clearAll" title="Clear all"><i class="fas fa-trash"></i></button>
+				<div class="dropdown ml-2">
+					<button class="btn btn-primary" type="button" id="dropdownMenuSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-cog"></i>
+					</button>
+					<div class="dropdown-menu p-2 dropdown-menu-right" aria-labelledby="dropdownMenuSettings">
+						<div class="custom-control custom-switch">
+							<input type="checkbox" class="custom-control-input" id="customSwitch">
+							<label class="custom-control-label" for="customSwitch">Theme toggle</label>
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary mx-2" id="clearAll" title="Clear all"><i class="fas fa-trash"></i></button>
+				</div>
+
 			</div>
 		</nav>
 		<div class="row justify-content-center">

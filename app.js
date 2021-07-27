@@ -20,10 +20,13 @@ const PRIORITY = {
 	medium: 'Medium',
 	high: 'High',
 };
+const themeToggleBtn = document.querySelector('.custom-control-input');
 
 render();
 
 localStorage.setItem(0, SORTING.asc);
+
+themeToggleBtn.addEventListener('change', toggleTheme);
 
 ascBtn.addEventListener('click', () => {
 	setSorting(SORTING.asc);
@@ -173,7 +176,7 @@ function renderTasks() {
 		} else {
 			let color = 'bg-warning';
 			if (current.priority === PRIORITY.low) {
-				color = 'bg-light';
+				color = 'bg-info';
 			} else if (current.priority === PRIORITY.high) {
 				color = 'bg-danger';
 			}
@@ -285,4 +288,9 @@ function setSorting(value) {
 
 function addToTasksArray(array, item) {
 	array.push(JSON.parse(localStorage.getItem(item)));
+}
+
+function toggleTheme() {
+	const body = document.querySelector('body');
+	body.classList.toggle('dark');
 }
