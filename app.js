@@ -171,7 +171,7 @@ function renderTasks() {
 
 	for (let i = 0; i < tasksArray.length; i++) {
 		const current = tasksArray[i];
-		if (current === null) {
+		if (!current) {
 			continue;
 		} else {
 			let color = 'bg-warning';
