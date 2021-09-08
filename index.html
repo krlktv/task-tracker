@@ -12,6 +12,19 @@
 			min-height: calc(100vh - 15px);
 			margin: 15px auto 0;
 		}
+
+		body.dark {
+			background-color: #434343 !important;
+			color: #fff !important;
+		}
+
+		body.dark nav {
+			background-color: #828282 !important;
+		}
+
+		body.dark .modal-content {
+			background-color: #828282 !important;
+		}
 	</style>
 	<title>LogicPart</title>
 </head>
@@ -25,11 +38,23 @@
 				<button type="button" class="btn btn-primary" id="decr"><i class="fas fa-sort-numeric-up"></i></button>
 			</div>
 			<div class="d-flex">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
 					<i class="fas fa-plus"></i>
 					Add task
 				</button>
-				<button type="button" class="btn btn-primary mx-2" id="clearAll" title="Clear all"><i class="fas fa-trash"></i></button>
+				<div class="dropdown ml-2">
+					<button class="btn btn-primary" type="button" id="dropdownMenuSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-cog"></i>
+					</button>
+					<div class="dropdown-menu p-2 dropdown-menu-right" aria-labelledby="dropdownMenuSettings">
+						<div class="custom-control custom-switch">
+							<input type="checkbox" class="custom-control-input" id="customSwitch">
+							<label class="custom-control-label" for="customSwitch">Theme toggle</label>
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary mx-2" id="clearAll" title="Clear all"><i class="fas fa-trash"></i></button>
+				</div>
+
 			</div>
 		</nav>
 		<div class="row justify-content-center">
@@ -92,11 +117,11 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Add task</h5>
+					<h5 class="modal-title" id="modalLabel">Add task</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -106,13 +131,13 @@
 						<div class="form-group row">
 							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputTitle" placeholder="Title" required>
+								<input type="text" class="form-control" id="inputTitle" placeholder="Title" autocomplete="off" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="inputText" class="col-sm-2 col-form-label">Text</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputText" placeholder="Text" required>
+								<input type="text" class="form-control" id="inputText" placeholder="Text" autocomplete="off" required>
 							</div>
 						</div>
 						<fieldset class="form-group">
@@ -152,7 +177,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -166,13 +191,13 @@
 						<div class="form-group row">
 							<label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="editInputTitle" placeholder="Title" required>
+								<input type="text" class="form-control" id="editInputTitle" placeholder="Title" autocomplete="off" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="inputText" class="col-sm-2 col-form-label">Text</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="editInputText" placeholder="Text" required>
+								<input type="text" class="form-control" id="editInputText" placeholder="Text" autocomplete="off" required>
 							</div>
 						</div>
 						<fieldset class="form-group">
